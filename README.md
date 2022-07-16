@@ -14,6 +14,7 @@
 ゲームの感想を共有したい時や、ゲームの内容が知りたい時等
 
 ## 設計書
+実装機能リスト: https://docs.google.com/spreadsheets/d/1sWIPO-3DQJbEcJW-gW9m1b8o1P9FImQf_LJWUYXlXg4/edit#gid=1091086188
 <...>
 
 ## 開発環境
