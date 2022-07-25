@@ -11,6 +11,73 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to root_path do %>
+          <h1 class="text-dark border border-dark py-1 px-4">GAME</h1>
+        <% end %>
+
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">My投稿</div>
+              <%  %>
+            </li>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">レビュー一覧</div>
+              <%  %>
+            </li>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">いいね一覧</div>
+              <%  %>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+                <div class="text-dark mr-4">ログアウト</div>
+              <% end %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">レビュー一覧</div>
+              <%  %>
+            </li>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">ユーザー一覧</div>
+              <%  %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+                <div class="text-dark mr-4">ログアウト</div>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">レビュー一覧</div>
+              <%  %>
+            </li>
+            <li>
+              <%=  %>
+                <div class="text-dark mr-4">ゲストログイン</div>
+              <%  %>
+            </li>
+            <li>
+              <%= link_to new_customer_registration_path do %>
+                <div class="text-dark mr-4">新規登録</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_customer_session_path do %>
+                <div class="text-dark mr-4">ログイン</div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </header>
     <%= yield %>
   </body>
 </html>
