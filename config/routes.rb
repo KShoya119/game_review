@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'review_comment/destroy'
 
   get 'reviews/index'
-  get 'reviews/new'
+  get 'reviews/new' => 'public/reviews#new'
   get 'reviews/create'
   get 'reviews/show'
   get 'reviews/update'
