@@ -6,23 +6,37 @@
       ゲームタイトル<br>
       <%= f.text_field :game_title %>
     </div>
-  
-    <div>
-    評価
+
+    <div class="field" id="star">
+      <%= f.label :evaluation, "星評価：" %>
+      <%= f.hidden_field :evaluation, id: :review_star %>
     </div>
-    
+    <script>
+      $('#star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'review[evaluation]',
+        half: true,
+      });
+    </script>
+
     <div>
       レビュータイトル<br>
       <%= f.text_field :review_title %>
     </div>
-    
+
     <div>
       レビュー内容<br>
       <%= f.text_field :review %>
     </div>
-    
+
     <div>
       ゲームジャンル
     </div>
+
+    <%= f.submit "投稿" %>
   <% end %>
 </div>
+

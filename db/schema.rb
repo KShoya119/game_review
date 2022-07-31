@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_07_25_044727) do
   create_table "reviews", force: :cascade do |t|
     t.integer "customer_id"
     t.string "game_title"
-    t.integer "evaluation"
+    t.float "evaluation"
     t.string "review_title"
     t.text "review"
     t.integer "game_genre"
