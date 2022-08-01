@@ -6,7 +6,6 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.float :evaluation
       t.string :review_title
       t.text :review
-      t.integer :game_genre
       t.integer :status
 
       t.timestamps

@@ -4,10 +4,12 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @game_genres = GameGenre.all
   end
 
   def create
     @review = Review.new(review_params)
+    @book.customer_id = current_customer.id
     review.save
     redirect_to 'reviews/index'
   end

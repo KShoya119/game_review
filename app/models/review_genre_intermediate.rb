@@ -1,0 +1,2 @@
+class ReviewGenreIntermediate < ApplicationRecord
+end
