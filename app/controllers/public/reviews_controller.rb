@@ -4,19 +4,15 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @game_genres = GameGenre.all
+    @review_genre_intermediate = ReviewGenreIntermediate.new
+
   end
 
   def create
     @review = Review.new(review_params)
-    @book.customer_id = current_customer.id
-    review.save
-    
-    @review_genre_intermediate = ReviewGenreIntermediate.new
-    @review_genre_intermediate.review_id = @review.id
-    @review_genre_intermediate.game_genre_id = game_genre.id
-    review_genre_intermediate.save
-    redirect_to 'reviews/index'
+    @review.customer_id = current_customer.id
+    @review.save
+    redirect_to '/reviews/new'
   end
 
   def show
@@ -26,5 +22,14 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def review_params
+    params.require(:review).permit(:customer_id, :game_title, :evaluation, :review_title, :review)
+  end
+
+  def review_genre_intermediate_params
+    params.require(:review_genre_intermediate).permit(:game_genre_id, game_genre_ids:[])
   end
 end

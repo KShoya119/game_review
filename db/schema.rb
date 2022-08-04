@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2022_08_01_071450) do
     t.integer "game_genre_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_genre_id"], name: "index_review_genre_intermediates_on_game_genre_id"
+    t.index ["review_id"], name: "index_review_genre_intermediates_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -76,4 +78,6 @@ ActiveRecord::Schema.define(version: 2022_08_01_071450) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "review_genre_intermediates", "game_genres"
+  add_foreign_key "review_genre_intermediates", "reviews"
 end

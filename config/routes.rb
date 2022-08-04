@@ -20,13 +20,15 @@ Rails.application.routes.draw do
 
   get 'reviews/index'
   get 'reviews/new' => 'public/reviews#new'
-  get 'reviews/create'
+  post 'reviews' => 'public/reviews#create'
   get 'reviews/show'
   get 'reviews/update'
   get 'reviews/destroy'
 
   get 'customers/show'
   get 'customers/withdrawal'
+
+  post 'review_genre_intermediates' => 'public/review_genre_intermediates#create'
 
 devise_for :admins, controllers: {
   sessions:      'admin/admins/sessions',
