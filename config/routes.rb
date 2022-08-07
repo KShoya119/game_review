@@ -18,12 +18,13 @@ Rails.application.routes.draw do
   get 'review_comment/create'
   get 'review_comment/destroy'
 
-  get 'reviews/index'
-  get 'reviews/new' => 'public/reviews#new'
-  post 'reviews' => 'public/reviews#create'
+
   get 'reviews/show'
   get 'reviews/update'
   get 'reviews/destroy'
+  scope module: :public do
+    resources :reviews, only: [:index, :new, :create]
+  end
 
   get 'customers/show'
   get 'customers/withdrawal'

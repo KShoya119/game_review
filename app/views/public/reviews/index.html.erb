@@ -1,2 +1,38 @@
-<h1>Customer::Reviews#index</h1>
-<p>Find me in app/views/customer/reviews/index.html.erb</p>
+<div class="cuntainer">
+
+  <h1>レビュー</h1>
+
+  <div>
+    <% @reviews.each do |review| %>
+
+      投稿者<br>
+      <%= review.customer.name %><br>
+      ゲームタイトル<br>
+      <%= review.game_title %><br>
+      評価<br>
+      <div class="detail-value", id="star-comf-<%= review.id %>"></div>
+        <script>
+          $('#star-comf-<%= review.id %>').raty({
+            size: 38,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= review.evaluation %>,
+          });
+        </script>
+      レビュー<br>
+      <%= review.review_title %><br>
+      <%= review.review %><br>
+
+      <% review.game_genres.each do |genre| %>
+        ジャンル<br>
+        <%= genre.genre_name %>
+      <% end %>
+
+    <% end %>
+  </div>
+
+
+</div>
