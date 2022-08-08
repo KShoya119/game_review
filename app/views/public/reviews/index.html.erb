@@ -1,35 +1,52 @@
-<div class="cuntainer">
+<div class="container my-3">
 
   <h1>レビュー</h1>
 
-  <div>
+  <div class="row">
     <% @reviews.each do |review| %>
+　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
+      <div>
+        <p>投稿者: <%= review.customer.name %></p>
+      </div>
 
-      投稿者<br>
-      <%= review.customer.name %><br>
-      ゲームタイトル<br>
-      <%= review.game_title %><br>
-      評価<br>
-      <div class="detail-value", id="star-comf-<%= review.id %>"></div>
-        <script>
-          $('#star-comf-<%= review.id %>').raty({
-            size: 38,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= review.evaluation %>,
-          });
-        </script>
-      レビュー<br>
-      <%= review.review_title %><br>
-      <%= review.review %><br>
+      <div class="font-weight-bold h5">
+        <u>ゲームタイトル</u>
+        <p class="ml-3 mt-2"><%= review.game_title %></p>
+      </div>
 
-      <% review.game_genres.each do |genre| %>
-        ジャンル<br>
-        <%= genre.genre_name %>
-      <% end %>
+      <div class="py-2 font-weight-bold h5">
+        <u>評価</u><br>
+        <div class="detail-value ml-3 mt-2", id="star-comf-<%= review.id %>"></div>
+          <script>
+            $('#star-comf-<%= review.id %>').raty({
+              size: 38,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= review.evaluation %>,
+            });
+          </script>
+      </div>
+
+      <div class="py-2">
+        <div class="font-weight-bold h5">
+          <u>レビュー</u>
+        </div>
+        <div class="ml-3 font-weight-bold h5">
+          <%= review.review_title %>
+        </div>
+        <span ><%= review.review %></span><br>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>ジャンル</u><br>
+        <% review.game_genres.each do |genre| %>
+          <p class="ml-3 mt-2"><%= genre.genre_name %></p>
+        <% end %>
+      </div>
+    </div>
 
     <% end %>
   </div>
