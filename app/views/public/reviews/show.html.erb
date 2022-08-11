@@ -3,11 +3,62 @@
 
   <div>
     <p>投稿者: <%= @review.customer.name %></p>
-    
-    <div>
-      <h
-    </div>
-  </div>
 
+    <div class="font-weight-bold h5">
+        <u>ゲームタイトル</u>
+        <p class="ml-3 mt-2"><%= @review.game_title %></p>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>評価</u><br>
+        <div class="detail-value ml-3 mt-2", id="star-comf-<%= @review.id %>"></div>
+          <script>
+            $('#star-comf-<%= @review.id %>').raty({
+              size: 38,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= @review.evaluation %>,
+            });
+          </script>
+      </div>
+
+      <div class="py-2">
+        <div class="font-weight-bold h5">
+          <u>レビュー</u>
+        </div>
+        <div class="ml-3 font-weight-bold h5">
+          <%= @review.review_title %>
+        </div>
+        <span ><%= @review.review %></span><br>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>ジャンル</u><br>
+        <% @review.game_genres.each do |genre| %>
+          <p class="ml-3 mt-2"><%= genre.genre_name %></p>
+        <% end %>
+      </div>
+    </div>
+
+
+     <div class="mt-5">
+       <u><h5 class="font-weight-bold">コメント</h5></u><br>
+      <%= form_with model: [@review, @comment] do |f| %>
+        <%= f.text_area :comment, rows: '3', placeholder: "コメントを入力" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+
+      <div>
+        <% @review.comments.each do |comment| %>
+          <%= comment.customer.name %>: <%= comment.comment %><br>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 

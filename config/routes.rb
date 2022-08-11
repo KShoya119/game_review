@@ -15,13 +15,13 @@ Rails.application.routes.draw do
   get 'fovorites/create'
   get 'fovorites/destroy'
 
-  get 'review_comment/create'
-  get 'review_comment/destroy'
 
   get 'reviews/update'
   get 'reviews/destroy'
   scope module: :public do
-    resources :reviews, only: [:index, :new, :create, :show]
+    resources :reviews, only: [:index, :new, :create, :show] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   get 'customers/show'
