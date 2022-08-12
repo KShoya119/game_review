@@ -2,6 +2,13 @@
 
   <h1>レビュー</h1>
 
+  <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
+    <% GameGenre.all.each do |t| %>
+        <li class="col-2 d-inline-block"><%= check_box :geme_genre_id, t.genre_name %><%= t.genre_name %></li>
+    <% end %>
+    <%= submit_tag '検索' %>
+  <% end %>
+
   <div class="row">
     <% @reviews.each do |review| %>
 　　<div class="col-5 p-3 mx-4 my-2 border border-dark">

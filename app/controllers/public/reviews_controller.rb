@@ -1,6 +1,14 @@
 class Public::ReviewsController < ApplicationController
   def index
     @reviews = Review.all
+
+    if params[:game_genre_id]
+      @reviews = []
+      params[:game_genre_id].each do |key, value|
+        @reviews += GameGenre.find_by(genre_name: key).reviews if value == "1"
+      end
+      @reviews.uniq!
+    end
   end
 
   def new
