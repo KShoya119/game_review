@@ -2,12 +2,16 @@
 
   <h1>レビュー</h1>
 
-  <%= form_tag({controller:"reviews",action:"index"}, method: :get) do %>
-    <% GameGenre.all.each do |t| %>
-        <li class="col-2 d-inline-block"><%= check_box :geme_genre_id, t.genre_name %><%= t.genre_name %></li>
-    <% end %>
-    <%= submit_tag '検索' %>
+  <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(GameGenre.all, :id, :genre_name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
   <% end %>
+
 
   <div class="row">
     <% @reviews.each do |review| %>
@@ -57,6 +61,7 @@
 
     <% end %>
   </div>
+
 
 
 </div>
