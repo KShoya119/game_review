@@ -29,9 +29,9 @@
               <% end %>
             </li>
             <li>
-              <%=  %>
+              <%= link_to favorites_customer_path(current_customer.id) do %>
                 <div class="text-dark mr-4">いいね一覧</div>
-              <%  %>
+              <% end %>
             </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete do %>

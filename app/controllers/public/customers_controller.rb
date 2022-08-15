@@ -4,8 +4,8 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     @customer = Customer.find(params[:id])
-    fovorites= Fovorite.where(customer_id: @customer.id).pluck(:review_id)
-    @fovorite_reviews = Review.find(fovorites)
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:review_id)
+    @favorite_reviews = Review.find(favorites)
   end
 
   def withdrawal

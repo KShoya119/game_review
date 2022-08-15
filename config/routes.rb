@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'reviews/destroy'
   scope module: :public do
     resources :reviews, only: [:index, :new, :create, :show] do
-      resource :fovorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
   end
