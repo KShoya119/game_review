@@ -1,6 +1,14 @@
 <div class="container my-3">
 
-  <h1>レビュー</h1>
+  <div class="row">
+    <h1>レビュー</h1>
+
+    <div class="col text-right">
+      <%= link_to new_review_path, class: "btn btn-lg btn-light rounded-circle p-0", style: "width:3rem;height:3rem;" do %>
+        <h2 class="mt-1">＋</h2>
+      <% end %>
+    </div>
+  </div>
 
   <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
       <%= select_tag :tag_id,
@@ -20,9 +28,23 @@
         <p>投稿者: <%= review.customer.name %></p>
       </div>
 
+      <% if review.fovorited_by?(current_customer) %>
+        <%= link_to review_fovorites_path(review), method: :delete do %>
+           ♥<%= review.fovorites.count %>
+        <% end %>
+
+        <% else %>
+
+        <%= link_to review_fovorites_path(review), method: :post do %>
+          ♡<%= review.fovorites.count %>
+        <% end %>
+      <% end %>
+
       <div class="font-weight-bold h5">
         <u>ゲームタイトル</u>
-        <p class="ml-3 mt-2"><%= review.game_title %></p>
+        <%= link_to review_path(review.id) do %>
+          <p class="ml-3 mt-2"><%= review.game_title %></p>
+        <% end %>
       </div>
 
       <div class="py-2 font-weight-bold h5">

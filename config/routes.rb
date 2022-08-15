@@ -11,21 +11,26 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-  get 'fovorites/index' => 'public/fovorites/index'
-  get 'fovorites/create'
-  get 'fovorites/destroy'
-
 
   get 'reviews/update'
   get 'reviews/destroy'
   scope module: :public do
     resources :reviews, only: [:index, :new, :create, :show] do
+      resource :fovorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
   end
 
   get 'customers/show'
   get 'customers/withdrawal'
+  scope module: :public do
+    resources :customers, only: [] do
+      member do
+        get :favorites
+      end
+    end
+  end
+
 
   post 'review_genre_intermediates' => 'public/review_genre_intermediates#create'
 

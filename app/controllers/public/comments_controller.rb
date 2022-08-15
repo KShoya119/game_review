@@ -8,7 +8,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-
+    Comment.find(params[:id]).destroy
+    redirect_to review_path(params[:review_id])
   end
 
   def comment_params

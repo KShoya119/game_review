@@ -53,7 +53,10 @@
 
       <div>
         <% @review.comments.each do |comment| %>
-          <%= comment.customer.name %>: <%= comment.comment %><br>
+          <%= comment.customer.name %>: <%= comment.comment %>
+          <% if comment.customer == current_customer %>
+            <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %><br>
+          <% end %>
         <% end %>
       </div>
 
