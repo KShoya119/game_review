@@ -19,9 +19,9 @@
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li>
-              <%=  %>
+              <%= link_to customer_path(current_customer) do %>
                 <div class="text-dark mr-4">My投稿</div>
-              <%  %>
+              <% end %>
             </li>
             <li>
               <%= link_to reviews_path do %>

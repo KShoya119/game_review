@@ -21,10 +21,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'customers/show'
+
   get 'customers/withdrawal'
   scope module: :public do
-    resources :customers, only: [] do
+    resources :customers, only: [:show] do
       member do
         get :favorites
       end
