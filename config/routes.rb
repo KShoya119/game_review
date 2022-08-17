@@ -22,16 +22,6 @@ Rails.application.routes.draw do
   end
 
 
-  get 'customers/withdrawal'
-  scope module: :public do
-    resources :customers, only: [:show] do
-      member do
-        get :favorites
-      end
-    end
-  end
-
-
   post 'review_genre_intermediates' => 'public/review_genre_intermediates#create'
 
 devise_for :admins, controllers: {
@@ -47,6 +37,15 @@ devise_for :customers, controllers: {
 devise_scope :customer do
   post 'customers/guest_sign_in', to: 'public/customers/sessions#guest_sign_in'
 end
+
+get 'customers/withdrawal'
+  scope module: :public do
+    resources :customers, only: [:show] do
+      member do
+        get :favorites
+      end
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

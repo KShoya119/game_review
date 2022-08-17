@@ -1,1 +1,64 @@
-<h1>Myレビュー</h1>
+<div class="container">
+  <h1>Myレビュー</h1>
+
+
+  <div class="row">
+    <% @reviews.each do |review| %>
+　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
+
+      <% if review.favorited_by?(current_customer) %>
+        <%= link_to review_favorites_path(review), method: :delete do %>
+           ♥<%= review.favorites.count %>
+        <% end %>
+
+        <% else %>
+
+        <%= link_to review_favorites_path(review), method: :post do %>
+          ♡<%= review.favorites.count %>
+        <% end %>
+      <% end %>
+
+      <div class="font-weight-bold h5">
+        <u>ゲームタイトル</u>
+        <%= link_to review_path(review.id) do %>
+          <p class="ml-3 mt-2"><%= review.game_title %></p>
+        <% end %>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>評価</u><br>
+        <div class="detail-value ml-3 mt-2", id="star-comf-<%= review.id %>"></div>
+          <script>
+            $('#star-comf-<%= review.id %>').raty({
+              size: 38,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= review.evaluation %>,
+            });
+          </script>
+      </div>
+
+      <div class="py-2">
+        <div class="font-weight-bold h5">
+          <u>レビュー</u>
+        </div>
+        <div class="ml-3 font-weight-bold h5">
+          <%= review.review_title %>
+        </div>
+        <span ><%= review.review %></span><br>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>ジャンル</u><br>
+        <% review.game_genres.each do |genre| %>
+          <p class="ml-3 mt-2"><%= genre.genre_name %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>

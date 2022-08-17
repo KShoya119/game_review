@@ -33,6 +33,8 @@ class Public::ReviewsController < ApplicationController
   end
 
   def destroy
+    Review.find(params[:id]).destroy
+    redirect_to customer_path(current_customer)
   end
 
   private
