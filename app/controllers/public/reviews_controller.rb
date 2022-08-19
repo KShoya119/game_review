@@ -1,6 +1,6 @@
 class Public::ReviewsController < ApplicationController
   def index
-    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews : Review.all
+    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.published : Review.published
 
   end
 
@@ -39,6 +39,6 @@ class Public::ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:customer_id, :game_title, :evaluation, :review_title, :review, game_genre_id:[])
+    params.require(:review).permit(:customer_id, :game_title, :evaluation, :review_title, :review, :status, game_genre_id:[])
   end
 end

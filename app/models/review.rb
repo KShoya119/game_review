@@ -10,6 +10,9 @@ class Review < ApplicationRecord
     greater_than_or_equal_to: 1
   }, presence: true
 
+  scope :published, -> {where(status: true)}
+  scope :unpublished, -> {where(status: false)}
+
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
