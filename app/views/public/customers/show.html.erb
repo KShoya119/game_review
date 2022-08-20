@@ -18,6 +18,19 @@
         <% end %>
       <% end %>
 
+      <%= form_with model: review, url: review_path(review.id) do |f| %>
+        <div>
+         <%= f.label :status, "公開", value: true %>
+         <%= f.radio_button :status, 'true' %>
+        </div>
+        <div>
+          <%= f.label :status, "非公開", value: false %>
+          <%= f.radio_button :status,'false' %>
+        </div>
+
+        <%= f.submit "変更" %>
+      <% end %>
+
       <div class="font-weight-bold h5">
         <u>ゲームタイトル</u>
         <%= link_to review_path(review.id) do %>

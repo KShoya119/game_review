@@ -11,18 +11,13 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-
-  get 'reviews/update'
   get 'reviews/destroy'
   scope module: :public do
-    resources :reviews, only: [:index, :new, :create, :show] do
+    resources :reviews, only: [:index, :new, :create, :show, :update] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
   end
-
-
-  post 'review_genre_intermediates' => 'public/review_genre_intermediates#create'
 
 devise_for :admins, controllers: {
   sessions:      'admin/admins/sessions',

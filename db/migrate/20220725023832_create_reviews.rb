@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.1]
       t.float :evaluation
       t.string :review_title
       t.text :review
-      t.integer :status
+      t.boolean :status
 
       t.timestamps
     end
