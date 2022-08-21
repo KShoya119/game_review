@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
+    resources :customers, only: [:index, :show]
   end
   namespace :admin do
-    get 'reviews/index'
-    get 'reviews/destroy'
-    get 'reviews/show'
+    resources :reviews, only: [:index, :show, :destroy]
   end
 
   root to: 'public/homes#top'

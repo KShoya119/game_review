@@ -1,2 +1,75 @@
-<h1>Admin::Reviews#index</h1>
-<p>Find me in app/views/admin/reviews/index.html.erb</p>
+<div class="container my-3">
+
+  <div class="row">
+    <h1>レビュー</h1>
+  </div>
+
+  <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(GameGenre.all, :id, :genre_name, params[:tag_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
+  <% end %>
+
+
+  <div class="row">
+    <% @reviews.each do |review| %>
+　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
+      <div>
+        <p>投稿者: <%= review.customer.name %></p>
+      </div>
+
+      ♡<%= review.favorites.count %>
+      <%= link_to "削除", admin_review_path(review), method: :delete %>
+
+      <div class="font-weight-bold h5">
+        <u>ゲームタイトル</u>
+        <%= link_to admin_review_path(review.id) do %>
+          <p class="ml-3 mt-2"><%= review.game_title %></p>
+        <% end %>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>評価</u><br>
+        <div class="detail-value ml-3 mt-2", id="star-comf-<%= review.id %>"></div>
+          <script>
+            $('#star-comf-<%= review.id %>').raty({
+              size: 38,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= review.evaluation %>,
+            });
+          </script>
+      </div>
+
+      <div class="py-2">
+        <div class="font-weight-bold h5">
+          <u>レビュー</u>
+        </div>
+        <div class="ml-3 font-weight-bold h5">
+          <%= review.review_title %>
+        </div>
+        <span ><%= review.review %></span><br>
+      </div>
+
+      <div class="py-2 font-weight-bold h5">
+        <u>ジャンル</u><br>
+        <% review.game_genres.each do |genre| %>
+          <p class="ml-3 mt-2"><%= genre.genre_name %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+
+
+
+</div>
+

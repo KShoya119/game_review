@@ -19,3 +19,8 @@ GameGenre.create([
   { genre_name: "テーブル" },
   { genre_name: "その他" }
 ])
+
+Admin.create!(
+    email: 'admin@admin.com',
+    password: 'kkmswk',
+)
