@@ -1,4 +1,6 @@
 class Public::ReviewsController < ApplicationController
+  before_action :move_to_signed_in,except: [:index]
+
   def index
     @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.published : Review.published
 
@@ -43,5 +45,11 @@ class Public::ReviewsController < ApplicationController
   private
   def review_params
     params.require(:review).permit(:customer_id, :game_title, :evaluation, :review_title, :review, :status, game_genre_id:[])
+  end
+
+  def move_to_signed_in
+    unless customer_signed_in?
+      redirect_to  '/customers/sign_in'
+    end
   end
 end
