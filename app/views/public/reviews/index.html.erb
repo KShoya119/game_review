@@ -1,29 +1,31 @@
 <div class="container my-3">
 
   <div class="row">
-    <h1>レビュー</h1>
+    <h1 class="bg-secondary p-2 text-white rounded-pill">レビュー</h1>
 
     <div class="col text-right">
-      <%= link_to new_review_path, class: "btn btn-lg btn-light rounded-circle p-0", style: "width:3rem;height:3rem;" do %>
+      <%= link_to new_review_path, class: "btn btn-lg btn-secondary rounded-circle p-0", style: "width:3rem;height:3rem;" do %>
         <h2 class="mt-1">＋</h2>
       <% end %>
     </div>
   </div>
 
-  <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(GameGenre.all, :id, :genre_name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     }
-      %>
-  <% end %>
+  <div class="mb-3">
+    <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
+        <%= select_tag :tag_id,
+                       options_from_collection_for_select(GameGenre.all, :id, :genre_name, params[:tag_id]),
+                       {
+                         prompt: 'タグで絞り込み検索',
+                         onchange: 'submit(this.form);'
+                       }
+        %>
+    <% end %>
+  </div>
 
 
   <div class="row">
     <% @reviews.each do |review| %>
-　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
+　　<div class="col-5 p-3 mx-4 my-2 border border-dark bg-secondary">
       <div>
         <p>投稿者: <%= review.customer.name %></p>
       </div>

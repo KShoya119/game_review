@@ -1,13 +1,16 @@
-<div class="container">
-  <h1>レビュー投稿</h1>
+<div class="container my-3">
+  <div class="row mb-3">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">レビュー投稿</h1>
+  </div>
 
+  <div class="ml-3">
   <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
-    <div>
+    <div class="mb-2">
       ゲームタイトル<br>
       <%= f.text_field :game_title %>
     </div>
 
-    <div class="field" id="star">
+    <div class="field mb-2" id="star">
       <%= f.label :evaluation, "星評価：" %>
       <%= f.hidden_field :evaluation, id: :review_star %>
     </div>
@@ -22,17 +25,17 @@
       });
     </script>
 
-    <div>
+    <div class="mb-2">
       レビュータイトル<br>
       <%= f.text_field :review_title %>
     </div>
 
-    <div>
+    <div class="mb-2">
       レビュー内容<br>
       <%= f.text_field :review %>
     </div>
 
-    <div>
+    <div class="mb-2">
       ゲームジャンル
       <%= collection_check_boxes(:review_genre_intermediate, :game_genre_id, GameGenre.all, :id, :genre_name) do |tag| %>
         <div class='form-check'>
@@ -55,5 +58,7 @@
 
     <%= f.submit "投稿" %>
   <% end %>
+  </div>
+
 </div>
 
