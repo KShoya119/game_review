@@ -25,7 +25,7 @@
 
   <div class="row">
     <% @reviews.each do |review| %>
-　　<div class="col-5 p-3 mx-4 my-2 border border-dark bg-secondary">
+　　<div class="col-5 p-3 mx-4 my-2 border border-info border-5">
       <div>
         <p>投稿者: <%= review.customer.name %></p>
       </div>
@@ -87,7 +87,7 @@
 
     <% end %>
 
-    <div class="mx-auto", style="letter-spacing:0.2rem">
+    <div class="mx-auto">
       <%= paginate @reviews %>
     </div>
 
