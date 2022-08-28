@@ -26,23 +26,28 @@
   <div class="row">
     <% @reviews.each do |review| %>
 　　<div class="col-5 p-3 mx-4 my-2 border border-info border-5">
-      <div>
-        <p>投稿者: <%= review.customer.name %></p>
+
+　　  <div class="d-flex">
+        <div>
+          <p>投稿者: <%= review.customer.name %></p>
+        </div>
+
+        <div class="ml-auto h5">
+          <% if customer_signed_in? %>
+            <% if review.favorited_by?(current_customer) %>
+              <%= link_to review_favorites_path(review), method: :delete do %>
+                <p>♥<%= review.favorites.count %></p>
+              <% end %>
+
+              <% else %>
+
+              <%= link_to review_favorites_path(review), method: :post do %>
+                <p>♡<%= review.favorites.count %></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-
-      <% if customer_signed_in? %>
-        <% if review.favorited_by?(current_customer) %>
-          <%= link_to review_favorites_path(review), method: :delete do %>
-            ♥<%= review.favorites.count %>
-          <% end %>
-
-          <% else %>
-
-          <%= link_to review_favorites_path(review), method: :post do %>
-            ♡<%= review.favorites.count %>
-          <% end %>
-        <% end %>
-      <% end %>
 
       <div class="font-weight-bold h5">
         <u>ゲームタイトル</u>
@@ -67,14 +72,14 @@
           </script>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 text-break  text-wrap">
         <div class="font-weight-bold h5">
           <u>レビュー</u>
         </div>
         <div class="ml-3 font-weight-bold h5">
           <%= review.review_title %>
         </div>
-        <span ><%= review.review %></span><br>
+        <span><%= review.review %></span><br>
       </div>
 
       <div class="py-2 font-weight-bold h5">
@@ -87,10 +92,10 @@
 
     <% end %>
 
-    <div class="mx-auto">
-      <%= paginate @reviews %>
-    </div>
+  </div>
 
+  <div class="row">
+    <div class="mx-auto"><%= paginate @reviews %></div>
   </div>
 
 

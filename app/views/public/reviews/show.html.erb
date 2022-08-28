@@ -1,5 +1,7 @@
 <div class="container my-3">
-  <h1>レビュー詳細</h1>
+  <div class="row mb-3">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">レビュー詳細</h1>
+  </div>
 
   <div>
     <p>投稿者: <%= @review.customer.name %></p>
@@ -25,7 +27,7 @@
           </script>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 text-break  text-wrap">
         <div class="font-weight-bold h5">
           <u>レビュー</u>
         </div>
@@ -51,12 +53,15 @@
         <%= f.submit "送信する" %>
       <% end %>
 
-      <div>
+      <div class="mt-2 text-break  text-wrap">
         <% @review.comments.each do |comment| %>
-          <%= comment.customer.name %>: <%= comment.comment %>
-          <% if comment.customer == current_customer %>
-            <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %><br>
-          <% end %>
+          <div class="mb-3 border">
+            <div class="bg-secondary p-1 text-white d-inline-block"><%= comment.customer.name %></div>
+            <div><%= comment.comment %></div>
+            <% if comment.customer == current_customer %>
+              <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, class: "text-danger" %><br>
+            <% end %>
+          </div>
         <% end %>
       </div>
 

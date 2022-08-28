@@ -1,41 +1,58 @@
-<div class="container">
-  <h1>Myレビュー</h1>
+<div class="container my-3">
+
+  <div class="row">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">Myレビュー</h1>
+  </div>
 
 
   <div class="row">
     <% @reviews.each do |review| %>
-　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
+　　<div class="col-5 p-3 mx-4 my-2 border border-info border-5">
 
-      <% if review.favorited_by?(current_customer) %>
-        <%= link_to review_favorites_path(review), method: :delete do %>
-           ♥<%= review.favorites.count %>
-        <% end %>
-
-        <% else %>
-
-        <%= link_to review_favorites_path(review), method: :post do %>
-          ♡<%= review.favorites.count %>
-        <% end %>
-      <% end %>
-
-      <%= form_with model: review, url: review_path(review.id) do |f| %>
-        <div>
-         <%= f.label :status, "公開", value: true %>
-         <%= f.radio_button :status, 'true' %>
-        </div>
-        <div>
-          <%= f.label :status, "非公開", value: false %>
-          <%= f.radio_button :status,'false' %>
-        </div>
-
-        <%= f.submit "変更" %>
-      <% end %>
-
+      <div class="d-flex">
       <div class="font-weight-bold h5">
         <u>ゲームタイトル</u>
         <%= link_to review_path(review.id) do %>
           <p class="ml-3 mt-2"><%= review.game_title %></p>
         <% end %>
+      </div>
+
+      <div class="ml-auto">
+        <div class="ml-auto">
+          <% if review.favorited_by?(current_customer) %>
+            <%= link_to review_favorites_path(review), method: :delete do %>
+              ♥<%= review.favorites.count %>
+            <% end %>
+
+            <% else %>
+
+            <%= link_to review_favorites_path(review), method: :post do %>
+              ♡<%= review.favorites.count %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="p-1 border border-dark">
+          <%= form_with model: review, url: review_path(review.id) do |f| %>
+            <div class="d-flex">
+              <div>
+                <div>
+                  <%= f.label :status, "公開", value: true %>
+                  <%= f.radio_button :status, 'true' %>
+                </div>
+                <div>
+                  <%= f.label :status, "非公開", value: false %>
+                  <%= f.radio_button :status,'false' %>
+                </div>
+              </div>
+
+              <div class="mt-auto ml-2 mb-1">
+                <%= f.submit "変更" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
       </div>
 
       <div class="py-2 font-weight-bold h5">
@@ -54,7 +71,7 @@
           </script>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 text-break  text-wrap">
         <div class="font-weight-bold h5">
           <u>レビュー</u>
         </div>

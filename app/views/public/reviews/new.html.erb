@@ -5,14 +5,14 @@
 
   <div class="ml-3">
   <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
-    <div class="mb-2">
-      ゲームタイトル<br>
-      <%= f.text_field :game_title %>
+    <div class="mb-3">
+      <h5>ゲームタイトル</h5>
+      <div class="ml-3"><%= f.text_field :game_title %></div>
     </div>
 
-    <div class="field mb-2" id="star">
-      <%= f.label :evaluation, "星評価：" %>
-      <%= f.hidden_field :evaluation, id: :review_star %>
+    <div class="field mb-3" id="star">
+      <h5><%= f.label :evaluation, "星評価" %></h5>
+      <div class="ml-3"><%= f.hidden_field :evaluation, id: :review_star %></div>
     </div>
     <script>
       $('#star').raty({
@@ -25,38 +25,45 @@
       });
     </script>
 
-    <div class="mb-2">
-      レビュータイトル<br>
-      <%= f.text_field :review_title %>
+    <div class="mb-3">
+      <h5>レビュータイトル</h5>
+      <div class="ml-3"><%= f.text_field :review_title %></div>
     </div>
 
-    <div class="mb-2">
-      レビュー内容<br>
-      <%= f.text_field :review %>
+    <div class="mb-3">
+      <h5>レビュー内容</h5>
+      <div class="ml-3"><%= f.text_field :review %></div>
     </div>
 
-    <div class="mb-2">
-      ゲームジャンル
-      <%= collection_check_boxes(:review_genre_intermediate, :game_genre_id, GameGenre.all, :id, :genre_name) do |tag| %>
-        <div class='form-check'>
-          <%= tag.label class: 'form-check-label' do %>
-            <%= tag.check_box class: 'form-check-input' %>
-            <%= tag.text %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-      <div>
-         <%= f.label :status, "公開", value: true %>
-         <%= f.radio_button :status, 'true' %>
-       </div>
-       <div>
-         <%= f.label :status, "非公開", value: false %>
-         <%= f.radio_button :status,'false' %>
+    <div class="mb-3">
+      <h5>ゲームジャンル</h5>
+      <div class="row border border-3 ml-3 p-2 w-50">
+        <%= collection_check_boxes(:review_genre_intermediate, :game_genre_id, GameGenre.all, :id, :genre_name) do |tag| %>
+          <div class='col-sm-5 form-check mr-3'>
+            <%= tag.label class: 'form-check-label' do %>
+              <%= tag.check_box class: 'form-check-input' %>
+              <%= tag.text %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+    </div>
 
-    <%= f.submit "投稿" %>
+    <div class="mb-2">
+      <h5>公開設定</h5>
+      <div class="ml-3 p-2 border border-3 d-inline-block">
+        <div>
+           <%= f.label :status, "公開", value: true %>
+           <%= f.radio_button :status, 'true' %>
+         </div>
+         <div>
+           <%= f.label :status, "非公開", value: false %>
+           <%= f.radio_button :status,'false' %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit "投稿", class: "btn btn-success" %>
   <% end %>
   </div>
 
