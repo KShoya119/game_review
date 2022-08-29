@@ -1,25 +1,32 @@
-<div class="container">
+<div class="container my-3">
 
-  <h1>いいね一覧</h1>
+  <div class="row">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">いいね一覧</h1>
+  </div>
 
   <div class="row">
     <% @favorite_reviews.each do |review|%>
-      <div class="col-5 p-3 mx-4 my-2 border border-dark">
-        <div>
-          <p>投稿者: <%= review.customer.name %></p>
+      <div class="col-5 p-3 mx-4 my-2 border border-info border-5">
+
+        <div class="d-flex">
+          <div>
+            <p>投稿者: <%= review.customer.name %></p>
+          </div>
+
+          <div class="ml-auto h5">
+            <% if review.favorited_by?(current_customer) %>
+              <%= link_to review_favorites_path(review), method: :delete do %>
+                ♥<%= review.favorites.count %>
+              <% end %>
+
+              <% else %>
+
+              <%= link_to review_favorites_path(review), method: :post do %>
+                ♡<%= review.favorites.count %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
-
-        <% if review.favorited_by?(current_customer) %>
-          <%= link_to review_favorites_path(review), method: :delete do %>
-             ♥<%= review.favorites.count %>
-          <% end %>
-
-          <% else %>
-
-          <%= link_to review_favorites_path(review), method: :post do %>
-            ♡<%= review.favorites.count %>
-          <% end %>
-        <% end %>
 
         <div class="font-weight-bold h5">
           <u>ゲームタイトル</u>
@@ -44,7 +51,7 @@
             </script>
         </div>
 
-        <div class="py-2">
+        <div class="py-2 text-break  text-wrap">
           <div class="font-weight-bold h5">
             <u>レビュー</u>
           </div>
@@ -61,6 +68,10 @@
           <% end %>
         </div>
       </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
+
+  <div class="row">
+    <div class="mx-auto"><%= paginate @favorite_reviews %></div>
+  </div>
+</div>

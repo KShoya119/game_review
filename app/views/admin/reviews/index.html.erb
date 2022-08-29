@@ -1,7 +1,7 @@
 <div class="container my-3">
 
   <div class="row">
-    <h1>レビュー</h1>
+    <h1 class="bg-secondary p-2 text-white rounded-pill">レビュー</h1>
   </div>
 
   <%= form_tag reviews_path, method: :get, class: 'boards__searchForm' do %>
@@ -17,13 +17,18 @@
 
   <div class="row">
     <% @reviews.each do |review| %>
-　　<div class="col-5 p-3 mx-4 my-2 border border-dark">
-      <div>
-        <p>投稿者: <%= review.customer.name %></p>
-      </div>
+　　<div class="col-5 p-3 mx-4 my-2 border border-info border-5">
 
-      ♡<%= review.favorites.count %>
-      <%= link_to "削除", admin_review_path(review), method: :delete %>
+　　  <div class="d-flex">
+        <div>
+          <p>投稿者: <%= review.customer.name %></p>
+        </div>
+
+        <div class="ml-auto">
+          ♡<%= review.favorites.count %><br>
+          <%= link_to "削除", admin_review_path(review), method: :delete, class: "text-danger" %>
+        </div>
+      </div>
 
       <div class="font-weight-bold h5">
         <u>ゲームタイトル</u>
@@ -48,7 +53,7 @@
           </script>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 text-break  text-wrap">
         <div class="font-weight-bold h5">
           <u>レビュー</u>
         </div>
@@ -69,6 +74,9 @@
     <% end %>
   </div>
 
+  <div class="row">
+    <div class="mx-auto"><%= paginate @reviews %></div>
+  </div>
 
 
 </div>

@@ -1,8 +1,11 @@
 <div class="container my-3">
 
-  <h1>ユーザー一覧</h1>
+  <div class="row">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">ユーザー一覧</h1>
+  </div>
 
-  <table>
+  <div class="row">
+  <table class="col-9 mx-auto table table-striped">
     <thead>
       <tr>
         <th>会員ID</th>
@@ -24,7 +27,11 @@
         </tr>
       </tbody>
     <% end %>
-
   </table>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto"><%= paginate @customers %></div>
+  </div>
 
 </div>

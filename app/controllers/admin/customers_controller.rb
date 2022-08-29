@@ -2,7 +2,7 @@ class Admin::CustomersController < ApplicationController
   before_action :move_to_signed_in
 
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page])
   end
 
   def show
