@@ -23,7 +23,7 @@ class Public::ReviewsController < ApplicationController
         game_genre = GameGenre.find(genre.to_i)
         @review.game_genres << game_genre
       end
-    redirect_to '/reviews/new'
+    redirect_to '/reviews'
   end
 
   def show

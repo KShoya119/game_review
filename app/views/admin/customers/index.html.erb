@@ -11,6 +11,7 @@
         <th>会員ID</th>
         <th>名前</th>
         <th>メールアドレス</th>
+        <th>会員ステータス</th>
       </tr>
     </thead>
 
@@ -24,6 +25,13 @@
             <% end %>
           </td>
           <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_valid %>
+              <div class="text-success">有効</div>
+            <% elsif %>
+              退会
+            <% end %>
+          </td>
         </tr>
       </tbody>
     <% end %>

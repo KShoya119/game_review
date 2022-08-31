@@ -1,14 +1,22 @@
 <div class="container my-3">
 
-<u><h2 class="mb-4">ログイン</h2></u>
+  <div class="row mb-4">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">ログイン</h1>
+  </div>
+
+  <div class="mb-2">
+      <% flash.each do |key, value| %>
+        <h5 class="p-2 w-50 border border-dark border-2"><%= content_tag(:div, value, class: key) %></h5>
+      <% end %>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field mb-3">
+  <div class="field mb-3 font-weight-bold">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="field font-weight-bold">
     <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>

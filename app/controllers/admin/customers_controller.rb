@@ -10,7 +10,18 @@ class Admin::CustomersController < ApplicationController
     @reviews = @customer.reviews.page(params[:page])
   end
 
+  def update
+    customer = Customer.find(params[:id])
+    customer.update(customer_params)
+    redirect_to admin_customer_path
+  end
+
   private
+
+  def customer_params
+    params.require(:customer).permit(:name, :email, :encrypted_password, :is_valid)
+  end
+
   def move_to_signed_in
     unless admin_signed_in?
       redirect_to  '/admins/sign_in'

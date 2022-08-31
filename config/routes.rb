@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :customers, only: [:index, :show]
+    resources :customers, only: [:index, :show, :update]
   end
   namespace :admin do
     resources :reviews, only: [:index, :show, :destroy]
@@ -30,9 +30,8 @@ devise_scope :customer do
   post 'customers/guest_sign_in', to: 'public/customers/sessions#guest_sign_in'
 end
 
-get 'customers/withdrawal'
   scope module: :public do
-    resources :customers, only: [:show] do
+    resources :customers, only: [:show, :withdrawal] do
       member do
         get :favorites
       end
