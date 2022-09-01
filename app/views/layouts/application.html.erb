@@ -11,73 +11,75 @@
   </head>
 
   <body>
-    <header class="navbar navbar-expand-lg border-bottom border-dark py-4">
+    <header class="navbar navbar-expand-lg border-bottom border-4 border-dark py-4 bg-success">
       <%= link_to root_path do %>
-          <h1 class="text-dark border border-dark py-1 px-4">GAME</h1>
+          <h1 class="text-dark border border-dark  py-1 px-4 bg-white">GAME</h1>
         <% end %>
 
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li>
               <%= link_to customer_path(current_customer) do %>
-                <div class="text-dark mr-4">My投稿</div>
+                <div class="text-white font-weight-bold mr-4">My投稿</div>
               <% end %>
             </li>
             <li>
               <%= link_to reviews_path do %>
-                <div class="text-dark mr-4">レビュー一覧</div>
+                <div class="text-white font-weight-bold mr-4">レビュー一覧</div>
               <% end %>
             </li>
             <li>
               <%= link_to favorites_customer_path(current_customer.id) do %>
-                <div class="text-dark mr-4">いいね一覧</div>
+                <div class="text-white font-weight-bold mr-4">いいね一覧</div>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete do %>
-                <div class="text-dark mr-4">ログアウト</div>
+                <div class="text-white font-weight-bold mr-4">ログアウト</div>
               <% end %>
             </li>
           <% elsif admin_signed_in? %>
             <li>
               <%= link_to admin_reviews_path do %>
-                <div class="text-dark mr-4">レビュー一覧</div>
+                <div class="text-white font-weight-bold mr-4">レビュー一覧</div>
               <% end %>
             </li>
             <li>
               <%= link_to admin_customers_path do %>
-                <div class="text-dark mr-4">ユーザー一覧</div>
+                <div class="text-white font-weight-bold mr-4">ユーザー一覧</div>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_admin_session_path, method: :delete do %>
-                <div class="text-dark mr-4">ログアウト</div>
+                <div class="text-white font-weight-bold mr-4">ログアウト</div>
               <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to reviews_path do %>
-                <div class="text-dark mr-4">レビュー一覧</div>
+                <div class="text-white font-weight-bold mr-4">レビュー一覧</div>
               <% end %>
             </li>
             <li>
               <%= link_to customers_guest_sign_in_path, method: :post do %>
-                <div class="text-dark mr-4">ゲストログイン</div>
+                <div class="text-white font-weight-bold mr-4">ゲストログイン</div>
               <% end %>
             </li>
             <li>
               <%= link_to new_customer_registration_path do %>
-                <div class="text-dark mr-4">新規登録</div>
+                <div class="text-white font-weight-bold mr-4">新規登録</div>
               <% end %>
             </li>
             <li>
               <%= link_to new_customer_session_path do %>
-                <div class="text-dark mr-4">ログイン</div>
+                <div class="text-white font-weight-bold mr-4">ログイン</div>
               <% end %>
             </li>
           <% end %>
         </ul>
     </header>
     <%= yield %>
+    <footer class="row border-top border-dark border-4">
+    </footer>
   </body>
 </html>

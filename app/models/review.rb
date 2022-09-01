@@ -5,6 +5,12 @@ class Review < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  validates :game_title, presence: true
+  validates :evaluation, presence: true
+  validates :review_title, presence: true
+  validates :review, presence: true
+  validates :status, presence: true
+
   validates :evaluation, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1

@@ -3,6 +3,18 @@
     <h1 class="bg-secondary p-2 text-white rounded-pill">レビュー投稿</h1>
   </div>
 
+  <div class="row">
+    <% if @review.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <ul>
+          <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
   <div class="ml-3">
   <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
     <div class="mb-3">
@@ -55,8 +67,8 @@
         <div>
            <%= f.label :status, "公開", value: true %>
            <%= f.radio_button :status, 'true' %>
-         </div>
-         <div>
+        </div>
+        <div>
            <%= f.label :status, "非公開", value: false %>
            <%= f.radio_button :status,'false' %>
         </div>

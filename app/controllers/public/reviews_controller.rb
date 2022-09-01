@@ -18,12 +18,18 @@ class Public::ReviewsController < ApplicationController
     @review.customer_id = current_customer.id
     @game_genre_ids = params[:review_genre_intermediate][:game_genre_id]
     @game_genre_ids.shift
-      @review.save
-      @game_genre_ids.each do |genre|
-        game_genre = GameGenre.find(genre.to_i)
-        @review.game_genres << game_genre
+      if @review.save
+        @game_genre_ids.each do |genre|
+          game_genre = GameGenre.find(genre.to_i)
+          if @review.game_genres << game_genre
+          else
+            render :new
+          end
+        end
+        redirect_to '/reviews'
+      else
+        render :new
       end
-    redirect_to '/reviews'
   end
 
   def show
