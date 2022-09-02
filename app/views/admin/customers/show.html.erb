@@ -12,17 +12,6 @@
         <tr><th>メールアドレス</th><td><%= @customer.email %></td></tr>
       </tbody>
     </table>
-
-    <%= form_with model: @customer, url: admin_customer_path do |f| %>
-      <div class="field border border-danger border-2 w-25 ml-3 p-2">
-        <div class="font-weight-bold">会員ステータス</div>
-        <div>
-          <%= f.radio_button :is_valid, true, autocomplete: "is_valid" %>有効
-          <%= f.radio_button :is_valid, false, autocomplete: "is_valid" %>退会
-        </div>
-        <div><%= f.submit "変更を保存", class: "btn btn-success" %></div>
-      </div>
-    <% end %>
   </div>
 
   <div class="row mt-4">

@@ -13,9 +13,6 @@ class Public::CustomersController < ApplicationController
     @favorite_reviews = Kaminari.paginate_array(@favorite_reviews).page(params[:page])
   end
 
-  def withdrawal
-  end
-
   private
   def move_to_signed_in
     unless customer_signed_in?

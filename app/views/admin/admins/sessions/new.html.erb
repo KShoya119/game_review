@@ -1,14 +1,16 @@
 <div class="container my-3">
 
-<h2>管理者ログイン</h2>
+  <div class="row">
+    <h1 class="bg-secondary p-2 text-white rounded-pill">管理者ログイン</h1>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field mb-3">
+  <div class="field mb-3 font-weight-bold">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field mb-3">
+  <div class="field mb-3 font-weight-bold">
     <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>

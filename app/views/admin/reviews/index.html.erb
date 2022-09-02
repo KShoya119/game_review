@@ -26,7 +26,7 @@
 
         <div class="ml-auto">
           ♡<%= review.favorites.count %><br>
-          <%= link_to "削除", admin_review_path(review), method: :delete, class: "text-danger" %>
+          <%= link_to "削除", admin_review_path(review), method: :delete, "data-confirm" => "本当に削除しますか？", class: "text-danger" %>
         </div>
       </div>
 

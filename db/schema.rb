@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2022_08_01_071450) do
     t.float "evaluation", null: false
     t.string "review_title", null: false
     t.text "review", null: false
-    t.boolean "status", null: false
+    t.boolean "status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
