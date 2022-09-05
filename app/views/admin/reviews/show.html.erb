@@ -27,7 +27,7 @@
           </script>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 text-break  text-wrap">
         <div class="font-weight-bold h5">
           <u>レビュー</u>
         </div>
@@ -54,7 +54,7 @@
           <div class="mb-3 border">
             <div class="bg-secondary p-1 text-white d-inline-block"><%= comment.customer.name %></div>
             <div><%= comment.comment %></div>
-            <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete %><br>
+            <%= link_to "削除", review_comment_path(comment.review, comment), method: :delete, class: "text-danger" %><br>
           </div>
         <% end %>
       </div>

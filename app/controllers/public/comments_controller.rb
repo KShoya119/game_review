@@ -9,7 +9,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to review_path(params[:review_id])
+    redirect_to request.referer
   end
 
   def comment_params
