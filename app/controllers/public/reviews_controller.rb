@@ -55,7 +55,7 @@ class Public::ReviewsController < ApplicationController
 
   def move_to_signed_in
     unless customer_signed_in?
-      redirect_to  '/customers/sign_in'
+      redirect_to  '/customers/sign_in', notice: '利用するには会員登録、またはログインが必要です'
     end
   end
 end

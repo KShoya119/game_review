@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-  get 'reviews/destroy'
   scope module: :public do
     resources :reviews, only: [:index, :new, :create, :show, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
@@ -31,7 +30,8 @@ devise_scope :customer do
 end
 
   scope module: :public do
-    resources :customers, only: [:show] do
+    get "customers/mypage" => "customers#show", as: "customer"
+    resources :customers do
       member do
         get :favorites
       end

@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   before_action :move_to_signed_in
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @reviews = @customer.reviews.page(params[:page])
   end
 
