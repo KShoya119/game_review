@@ -25,7 +25,12 @@
 
 ## 設計書
 実装機能リスト: https://docs.google.com/spreadsheets/d/1sWIPO-3DQJbEcJW-gW9m1b8o1P9FImQf_LJWUYXlXg4/edit#gid=1091086188
-<...>
+画面遷移図: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
+ワイヤーフレーム（ユーザー）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
+ワイヤーフレーム（管理者）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
+ER図: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
+テーブル定義書: https://docs.google.com/spreadsheets/d/1WtBGA_4UMA6xpWL8Mi6YiaaJmVXXlH2j7IUciJUtXmI/edit#gid=0<br>
+詳細設計: https://docs.google.com/spreadsheets/d/1U-90bdynvScFofvLorrc6XoJWH4NRpSWhzrNRpGMyn4/edit#gid=0<br>
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -33,7 +38,3 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
