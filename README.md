@@ -25,10 +25,10 @@
 
 ## 設計書
 実装機能リスト: https://docs.google.com/spreadsheets/d/1sWIPO-3DQJbEcJW-gW9m1b8o1P9FImQf_LJWUYXlXg4/edit#gid=1091086188<br>
-画面遷移図: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
-ワイヤーフレーム（ユーザー）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
-ワイヤーフレーム（管理者）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
-ER図: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
+画面遷移図: https://drive.google.com/file/d/1gg7KpwEBWs7Us6felBiYwrlWp6RA-R9m/view?usp=sharing<br>
+ワイヤーフレーム（ユーザー）: https://drive.google.com/file/d/1UYwJ0mzXVQWmz6AmiQrnnPHWDFADfAiE/view?usp=sharing<br>
+ワイヤーフレーム（管理者）: https://drive.google.com/file/d/1p7YKtaiVW4SfbFYwoBW8Ngpvaz4Zsz_X/view?usp=sharing<br>
+ER図: https://drive.google.com/file/d/1LG4Mqz33i9n7b3AAWl8Lz4aO7IH1bTRV/view?usp=sharing<br>
 テーブル定義書: https://docs.google.com/spreadsheets/d/1WtBGA_4UMA6xpWL8Mi6YiaaJmVXXlH2j7IUciJUtXmI/edit#gid=0<br>
 詳細設計: https://docs.google.com/spreadsheets/d/1U-90bdynvScFofvLorrc6XoJWH4NRpSWhzrNRpGMyn4/edit#gid=0<br>
 
