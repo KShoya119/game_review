@@ -24,7 +24,7 @@
 - 誰かに感想を共有したい時
 
 ## 設計書
-実装機能リスト: https://docs.google.com/spreadsheets/d/1sWIPO-3DQJbEcJW-gW9m1b8o1P9FImQf_LJWUYXlXg4/edit#gid=1091086188
+実装機能リスト: https://docs.google.com/spreadsheets/d/1sWIPO-3DQJbEcJW-gW9m1b8o1P9FImQf_LJWUYXlXg4/edit#gid=1091086188<br>
 画面遷移図: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
 ワイヤーフレーム（ユーザー）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
 ワイヤーフレーム（管理者）: https://drive.google.com/drive/folders/160phFgxot7upEb4iwVuoBDwQm41jFYDM<br>
