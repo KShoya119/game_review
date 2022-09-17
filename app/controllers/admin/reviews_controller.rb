@@ -2,7 +2,7 @@ class Admin::ReviewsController < ApplicationController
   before_action :move_to_signed_in
 
   def index
-    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.page(params[:page]) : Review.all.page(params[:page])
+    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.order(id: "DESC").page(params[:page]) : Review.all.order(id: "DESC").page(params[:page])
   end
 
   def destroy

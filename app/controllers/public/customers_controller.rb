@@ -3,12 +3,12 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @reviews = @customer.reviews.page(params[:page])
+    @reviews = @customer.reviews.order(id: "DESC").page(params[:page])
   end
 
   def favorites
     @customer = Customer.find(params[:id])
-    favorites= Favorite.where(customer_id: @customer.id).pluck(:review_id)
+    favorites= Favorite.order(id: "DESC").where(customer_id: @customer.id).pluck(:review_id)
     @favorite_reviews = Review.find(favorites)
     @favorite_reviews = Kaminari.paginate_array(@favorite_reviews).page(params[:page])
   end

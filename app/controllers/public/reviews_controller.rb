@@ -2,7 +2,7 @@ class Public::ReviewsController < ApplicationController
   before_action :move_to_signed_in,except: [:index]
 
   def index
-    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.published.page(params[:page]) : Review.published.page(params[:page])
+    @reviews = params[:tag_id].present? ? GameGenre.find(params[:tag_id]).reviews.published.order(id: "DESC").page(params[:page]) : Review.published.order(id: "DESC").page(params[:page])
 
   end
 
