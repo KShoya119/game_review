@@ -40,7 +40,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
-    redirect_to current_customer
+    redirect_to customer_path
   end
 
   def destroy
