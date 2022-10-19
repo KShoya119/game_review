@@ -22,5 +22,5 @@ GameGenre.create([
 
 Admin.create!(
     email: 'admin@admin.com',
-    password: 'kkmswk',
+    password: 'test123',
 )
